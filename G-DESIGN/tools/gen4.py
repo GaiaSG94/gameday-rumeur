@@ -4,7 +4,7 @@ import sys, os, json, base64
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = sys.argv[1]; os.makedirs(OUT, exist_ok=True)
 THREE = open(os.path.join(HERE, '..', 'three-dl', 'package', 'build', 'three.min.js')).read()
-VILLAGE = open(os.path.join(HERE, 'village4.js')).read()
+VILLAGE = open(os.path.join(HERE, 'village5.js')).read()
 INTER = base64.b64encode(open(os.path.join(HERE, '..', 'font-dl', 'package', 'files', 'inter-latin-wght-normal.woff2'), 'rb').read()).decode()
 CHROME = open(os.path.join(HERE, 'chrome.css')).read().replace('INTER', INTER)
 
