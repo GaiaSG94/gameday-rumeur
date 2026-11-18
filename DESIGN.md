@@ -1,3 +1,3 @@
-# DESIGN - gameday-p04
+# DESIGN - gameday-rumeur
 
-> A completer (Claude, prompt 07-design).
+Journal de design : voir `G-DESIGN/DESIGN.md`.

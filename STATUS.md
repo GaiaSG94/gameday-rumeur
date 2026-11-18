@@ -20,3 +20,8 @@ Prochaine etape : verification independante (prompt 04), puis design/video/soumi
 (dossier cree automatiquement, aucune tache encore lancee)
 
 ## Claude
+
+## Claude
+- Phase : design · Round V1 (3 directions, page Jeu) · 2026-11-18
+- Livré : `G-DESIGN/PAGES.md`, `REFS.md`, `DESIGN.md`, `planches/v1/01..03-*.html`
+- En attente : validation de Gaia (choix de direction + PAGES.md + 3 questions produit)
