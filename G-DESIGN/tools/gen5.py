@@ -4,8 +4,8 @@ import sys, os, json
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUTDIR = sys.argv[1]
 # reuse tokens/CSS from the validated Jeu generator (everything before its TPL)
-src = open(os.path.join(HERE, '..', 'v4', 'gen4.py')).read()
-ns = {'__file__': os.path.join(HERE, '..', 'v4', 'gen4.py')}
+src = open(os.path.join(HERE, 'gen4.py')).read()
+ns = {'__file__': os.path.join(HERE, 'gen4.py')}
 sys_argv = sys.argv; sys.argv = ['x', OUTDIR]
 exec(src[:src.index('TPL = """')], ns)
 sys.argv = sys_argv

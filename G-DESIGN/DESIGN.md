@@ -125,3 +125,10 @@ Changelog : STYLE.md, 3 pages déclinées, PAGES.md mis à jour.
 `/lock` demandé par Gaia : les 4 pages de `PAGES.md` sont validées (Jeu, Post, Carte de fin, Séries & classement).
 Fin des explorations. `STYLE.md` fait foi ; toute page ajoutée passe par `prompts/PROMPT-AJOUT-PAGE.md` (adapter au style, jamais le redéfinir).
 Planches de référence : `planches/v4/01..04-*.html`. V1–V3 conservées pour l'historique.
+
+### Note outillage (2026-11-18, PR)
+- `tools/` ne garde que l'outillage du style verrouillé : `village5.js` (module 3D, rétro-compatible avec la page Jeu), `gen4.py` (page Jeu),
+  `gen5.py` (pages 2–4), `chrome.css`, licence Inter. Les modules des rounds V2/V3 restent embarqués dans leurs planches.
+- Module 3D réécrit en fonctions fléchées pour respecter la garde `tools/check-limits.py`.
+- Les générateurs attendent `../three-dl/package/build/three.min.js` (three@0.149.0) et `../font-dl/package/files/inter-latin-wght-normal.woff2`
+  (@fontsource-variable/inter@5.0.8) à côté du dossier `tools/`.
