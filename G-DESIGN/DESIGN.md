@@ -119,3 +119,9 @@ Changelog V4 : module 3D et fond refaits, connecteurs de témoignages, carte de 
 4. Pseudos et chiffres des planches = données de démonstration.
 
 Changelog : STYLE.md, 3 pages déclinées, PAGES.md mis à jour.
+
+## LOCK — 2026-11-18
+
+`/lock` demandé par Gaia : les 4 pages de `PAGES.md` sont validées (Jeu, Post, Carte de fin, Séries & classement).
+Fin des explorations. `STYLE.md` fait foi ; toute page ajoutée passe par `prompts/PROMPT-AJOUT-PAGE.md` (adapter au style, jamais le redéfinir).
+Planches de référence : `planches/v4/01..04-*.html`. V1–V3 conservées pour l'historique.

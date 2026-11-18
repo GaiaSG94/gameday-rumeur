@@ -1,4 +1,4 @@
-# STYLE — Rumeur (validé par Gaia le 2026-11-18, à partir de la planche V4.1)
+# STYLE — Rumeur (verrouillé le 2026-11-18 — validé par Gaia à partir de la planche V4.1)
 
 Référence : `planches/v4/01-village-connecteurs.html`. Inspiration système : BridgeLab (principes, jamais d'asset ni de logo).
 Toute page suivante applique ce fichier tel quel ; une dérive est un défaut.
