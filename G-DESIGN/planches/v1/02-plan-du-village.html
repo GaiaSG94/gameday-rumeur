@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1440">
+<title>Rumeur V1 · 02 Plan du village</title>
+<style>:root{--board:#f4f2ee;--board-ink:#2b2321;--paper:#fbfaf7;--ink:#2b2321;--accent:#c8402a;--soft:#efe9e3;
+--serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;--sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
+--b-h1:700 30px/1.1 "Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--board)}
+body{font-family:var(--sans);color:var(--board-ink);min-width:1440px}
+.board{position:relative;width:1440px;height:900px;margin:0 auto;overflow:hidden;background:var(--board)}
+.b-title{position:absolute;left:40px;top:30px;width:835px}
+.b-title .kick{font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;opacity:.6}
+.b-title h1{font:var(--b-h1);margin-top:8px;letter-spacing:-.01em}
+.b-title p{font:400 12.5px/1.45 var(--sans);opacity:.75;margin-top:6px;max-width:835px}
+.frame{position:absolute;transform-origin:0 0;border-radius:14px;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.06),0 20px 50px -20px rgba(0,0,0,.35)}
+.frame-d{left:40px;top:168px;width:1440px;height:900px;transform:scale(.58)}
+.frame-m{left:996px;top:40px;width:390px;height:844px;transform:scale(.96);border-radius:44px;border:10px solid #111}
+.f-label{position:absolute;font:600 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;opacity:.55}
+/* host feed (neutral) */
+.host{width:100%;height:100%;background:#f1f2f4;color:#1b1c1e;font-family:-apple-system,"Segoe UI",system-ui,sans-serif;position:relative}
+.h-top{height:56px;background:#fff;border-bottom:1px solid #e3e5e8;display:flex;align-items:center;gap:16px;padding:0 20px}
+.h-dot{width:32px;height:32px;border-radius:50%;background:#d7dade}
+.h-search{flex:0 0 560px;height:38px;border-radius:19px;background:#eef0f2;margin-left:300px}
+.h-rail{position:absolute;left:0;top:56px;bottom:0;width:270px;background:#fff;border-right:1px solid #e3e5e8;padding:20px}
+.h-rail i{display:block;height:12px;border-radius:6px;background:#e6e8eb;margin:16px 0}
+.h-rail i:nth-child(2n){width:70%}
+.h-side{position:absolute;left:1080px;top:80px;width:320px;height:300px;background:#fff;border-radius:10px;border:1px solid #e3e5e8;padding:18px}
+.h-side i{display:block;height:10px;border-radius:5px;background:#e6e8eb;margin:12px 0}
+.post{background:#fff;border:1px solid #e3e5e8;border-radius:12px;overflow:hidden}
+.frame-d .post{position:absolute;left:310px;top:80px;width:740px}
+.p-head{display:flex;align-items:center;gap:8px;padding:12px 14px 4px;font-size:12px;color:#5c6066}
+.p-head .av{width:22px;height:22px;border-radius:50%;background:#c9ccd1}
+.p-head b{color:#1b1c1e}
+.p-title{font-size:18px;font-weight:600;padding:2px 14px 10px;line-height:1.3}
+.p-acts{display:flex;gap:8px;padding:10px 14px;font-size:12px;font-weight:600;color:#5c6066}
+.p-acts span{background:#eef0f2;border-radius:16px;padding:7px 12px}
+.slot-d{width:740px;height:512px;position:relative;overflow:hidden}
+.frame-m .host{background:#fff}
+.m-status{height:44px;display:flex;justify-content:space-between;align-items:center;padding:0 26px;font:600 14px/1 -apple-system,system-ui,sans-serif}
+.m-bar{height:48px;display:flex;align-items:center;gap:12px;padding:0 14px;border-bottom:1px solid #eceef0}
+.m-bar .h-dot{width:26px;height:26px}
+.m-bar i{flex:1;height:30px;border-radius:15px;background:#eef0f2}
+.frame-m .post{border:0;border-radius:0}
+.frame-m .p-title{font-size:16px}
+.slot-m{width:370px;height:560px;position:relative;overflow:hidden}
+/* tokens + states strip */
+.b-low{position:absolute;left:40px;top:706px;width:835px;display:grid;grid-template-columns:270px 1fr;gap:28px}
+.b-low h3{font:600 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;opacity:.55;margin-bottom:10px}
+.sw{display:flex;gap:8px}
+.sw div{width:58px}
+.sw span{display:block;height:44px;border-radius:8px;border:1px solid rgba(0,0,0,.08)}
+.sw small{display:block;font:500 10px/1.3 var(--sans);margin-top:5px;opacity:.75}
+.type-s{margin-top:14px;display:grid;gap:4px}
+.states{display:flex;gap:14px;align-items:flex-start}
+.state{flex:1}
+.state .cap{font:500 10px/1.3 var(--sans);opacity:.65;margin-top:8px}
+.mini{position:relative;height:136px;border-radius:10px;overflow:hidden;border:1px solid rgba(127,127,127,.25)}
+.is-mini .g-village{flex:0;padding-top:12px}.is-mini .g-foot{padding-top:8px}.is-mini .g-accuse{height:38px;font-size:13px}
+.game{container-type:size}
+
+.game{width:100%;height:100%;display:flex;flex-direction:column;background:var(--paper);color:var(--ink);font-family:var(--sans);position:relative}
+.g-head{display:flex;justify-content:space-between;align-items:center;padding:14px 18px 6px}
+.g-meta{display:flex;gap:12px;align-items:center;font:600 12px/1 var(--sans);font-variant-numeric:tabular-nums}
+.g-streak{display:inline-flex;align-items:center;gap:5px}
+.g-streak small{font-weight:500;opacity:.7}
+.g-rule{padding:0 18px 10px;font:500 13px/1.4 var(--sans)}
+.g-village{list-style:none;flex:1;display:flex;flex-direction:column;gap:8px;padding:4px 18px}
+.v{display:grid;grid-template-columns:56px 1fr;grid-template-rows:auto auto;column-gap:12px;align-items:center}
+.v-house{grid-row:1;grid-column:1;cursor:pointer;border:0;background:none;font:inherit;color:inherit}
+.v-name{grid-row:2;grid-column:1;text-align:center;font:600 11px/1.2 var(--sans);margin-top:3px}
+.v-bubble{grid-row:1/3;grid-column:2;position:relative}
+.v-says{display:block;font:600 10px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;opacity:.55;margin-bottom:4px}
+.v-bubble q{quotes:none;font-family:var(--serif)}
+.g-foot{padding:10px 18px 16px}
+.g-accuse{width:100%;height:48px;border:0;cursor:pointer;font:700 15px/1 var(--sans);letter-spacing:.02em}
+.g-accuse:disabled{cursor:default}
+@container (min-width:600px){
+  .g-village{flex-direction:row;align-items:flex-end;gap:12px;padding:6px 22px 0}
+  .v-bubble q{font-size:17px!important;line-height:1.3!important}
+  .v{flex:1;display:flex;flex-direction:column;align-items:center}
+  .v-bubble{width:100%;margin-bottom:12px}
+  .g-foot{display:flex;justify-content:center;padding:12px 22px 18px}
+  .g-accuse{width:300px}
+  .g-head{padding:16px 22px 6px}.g-rule{padding:0 22px 6px}
+}
+
+.game{background:var(--paper);border:0}
+.game::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(var(--accent),var(--accent)) 8px 0/1px 100% no-repeat,linear-gradient(var(--accent),var(--accent)) calc(100% - 8px) 0/1px 100% no-repeat;opacity:.5}
+.g-mark{font:800 21px/1 var(--sans);letter-spacing:-.02em;color:var(--accent);text-transform:uppercase}
+.g-meta{color:var(--accent);font-weight:500}
+.g-meta>span+span{border-left:1px solid var(--accent);padding-left:12px}
+.g-streak i{width:8px;height:8px;background:var(--accent)}
+.g-streak small{opacity:1}
+.g-rule{color:var(--ink);border-bottom:1px solid var(--accent);margin:0 18px;padding:0 0 10px}
+.g-rule b{color:var(--accent)}
+.g-village{gap:0;padding-top:0}
+.v{border-bottom:1px solid rgba(200,64,42,.35);padding:9px 0;grid-template-columns:44px 1fr}
+.v-house{width:40px;height:40px;border:1px solid var(--accent);border-radius:50%;background:var(--paper);display:grid;place-items:center;color:var(--accent);font:700 15px/1 var(--sans)}
+.v-name{display:none}
+.v-says{color:var(--accent);opacity:1;font-weight:500;letter-spacing:.04em;text-transform:none;font-size:11px}
+.v-bubble q{font-family:var(--sans);display:flex;flex-wrap:wrap;gap:4px;align-items:center;font-size:13px}
+.p-name,.p-claim{display:inline-block;border-radius:999px;padding:5px 11px;font-weight:600;line-height:1}
+.p-name{background:var(--soft);color:var(--ink)}
+.p-claim{border:1px solid var(--ink)}
+.p-claim.c-liar{background:var(--ink);color:var(--paper)}
+.v-bubble q{font-size:0}.v-bubble q>*{font-size:13px}
+.v.is-sel .v-house{background:var(--accent);color:var(--paper)}
+.v.is-sel .v-says{font-weight:700}
+.is-wrong .v-bubble{background:linear-gradient(var(--accent),var(--accent)) 0 60%/100% 1px no-repeat}.is-wrong .g-accuse{background:var(--ink)}
+.g-accuse{background:var(--accent);color:var(--paper);border-radius:999px;font-weight:600}
+.g-accuse:disabled{background:transparent;color:var(--accent);border:1px dashed var(--accent)}
+@container (min-width:600px){
+  .game::after{content:"";position:absolute;left:30px;right:30px;bottom:72px;height:150px;pointer-events:none;opacity:.3;
+    background:
+      repeating-linear-gradient(90deg,var(--accent) 0 1px,transparent 1px 28px),
+      repeating-linear-gradient(0deg,var(--accent) 0 1px,transparent 1px 18px);
+    -webkit-mask:linear-gradient(transparent,#000 60%);mask:linear-gradient(transparent,#000 60%);
+    transform:perspective(320px) rotateX(48deg);transform-origin:50% 100%}
+  .g-rule{margin:0 22px}
+  .g-village{gap:12px;align-items:flex-end;padding-top:16px;position:relative;z-index:1}
+  .v{border:1px solid var(--accent);border-radius:14px;padding:14px 10px 14px;background:var(--paper);min-height:190px;justify-content:flex-start}
+  .v-bubble{margin:0;order:2}
+  .v-house{order:1;margin-bottom:12px;width:46px;height:46px;font-size:17px}
+  .v-says{text-align:center;margin-bottom:8px}
+  .v-bubble q{justify-content:center}
+  .v.is-sel{background:#fbe9e4}
+  .g-accuse{width:280px}
+}
+</style></head>
+<body><div class="board">
+  <div class="b-title"><div class="kick">Rumeur · Planche V1 · Direction 02 · Page « Jeu »</div>
+    <h1>Plan du village</h1><p>Le village vu comme un plan d'enquête : un seul trait vermillon fin sur papier blanc, une place en perspective filaire, des étiquettes verticales en marge (Part Archi). Chaque témoignage est une phrase montée en pastilles, nom + affirmation, qu'on lit d'un coup d'œil (Cosmos). C'est la plus sobre et la plus lisible en 5 secondes : la logique est exposée comme un schéma.</p></div>
+
+  <div class="f-label" style="left:40px;top:154px">Desktop 1440 × 900 · post in the feed (scale 0.58)</div>
+  <div class="frame frame-d"><div class="host">
+    <div class="h-top"><div class="h-dot"></div><div class="h-search"></div></div>
+    <div class="h-rail"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="post">
+      <div class="p-head"><span class="av"></span><b>r/VillageRumors</b> · 2 h</div>
+      <div class="p-title">Who started today's rumor? · Nov 18</div>
+      <div class="slot-d" data-game=""></div>
+      <div class="p-acts"><span>▲ 1.2k ▼</span><span>214 comments</span><span>Share</span></div>
+    </div>
+    <div class="h-side"><i></i><i></i><i style="width:60%"></i><i></i><i style="width:40%"></i></div>
+  </div></div>
+
+  <div class="f-label" style="left:996px;top:26px">Mobile 390 × 844 · real context (scale 0.96)</div>
+  <div class="frame frame-m"><div class="host">
+    <div class="m-status"><span>9:41</span><span>●●● ▮</span></div>
+    <div class="m-bar"><div class="h-dot"></div><i></i></div>
+    <div class="post">
+      <div class="p-head"><span class="av"></span><b>r/VillageRumors</b> · 2 h</div>
+      <div class="p-title">Who started today's rumor? · Nov 18</div>
+      <div class="slot-m" data-game="3"></div>
+      <div class="p-acts"><span>▲ 1.2k ▼</span><span>214</span><span>Share</span></div>
+    </div>
+  </div></div>
+
+  <div class="b-low">
+    <div><h3>Tokens</h3><div class="sw"><div><span style="background:#fbfaf7"></span><small>#fbfaf7<br>Paper</small></div><div><span style="background:#2b2321"></span><small>#2b2321<br>Ink</small></div><div><span style="background:#efe9e3"></span><small>#efe9e3<br>Pill</small></div><div><span style="background:#c8402a"></span><small>#c8402a<br>Vermilion · only line & accent</small></div></div>
+      <div class="type-s"><div style="font:400 17px/1.2 var(--serif)">Voices · “Dmitri is lying.”</div>
+      <div style="font:600 12px/1.2 var(--sans)">Interface · Accuse · 01:42 · 6 day streak</div></div></div>
+    <div><h3>States · villager control (live: click a house in either frame)</h3><div class="states"><div class="state"><div class="mini"><div style="position:absolute;left:0;top:0;width:300px;height:234px;transform:scale(.58);transform-origin:0 0" data-mini="2,idle"></div></div><div class="cap"><b>Idle</b> · Dashed outline = not armed yet.</div></div><div class="state"><div class="mini"><div style="position:absolute;left:0;top:0;width:300px;height:234px;transform:scale(.58);transform-origin:0 0" data-mini="3,sel"></div></div><div class="cap"><b>Suspect chosen</b> · The circle fills; one vermilion fill per screen.</div></div><div class="state"><div class="mini"><div style="position:absolute;left:0;top:0;width:300px;height:234px;transform:scale(.58);transform-origin:0 0" data-mini="1,wrong"></div></div><div class="cap"><b>Wrong pick</b> · The row is struck through with one line (200 ms).</div></div></div></div>
+  </div>
+</div>
+<script>
+const DATA = {
+  day: 'Nov 18', clock: '01:42', streak: 6, liarCount: 1,
+  villagers: ['Ada','Boris','Clara','Dmitri','Elsa'],
+  statements: [
+    {speaker:0, about:1, claim:'honest'},
+    {speaker:1, about:0, claim:'honest'},
+    {speaker:2, about:3, claim:'liar'},
+    {speaker:3, about:0, claim:'liar'},
+    {speaker:4, about:2, claim:'honest'}
+  ]
+};
+
+const esc = s => String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+function renderGame(el, selected) {
+  const d = DATA, V = d.villagers;
+  const rows = d.statements.map((s, i) => {
+    const verb = s.claim === 'liar' ? 'is lying' : 'is telling the truth';
+    const sel = selected === i ? ' is-sel' : '';
+    return `<li class="v${sel}" style="--i:${i}">
+      <div class="v-bubble"><span class="v-says">${esc(V[s.speaker])} says</span>
+        <q><b class="p-name">${esc(V[s.about])}</b> <span class="p-claim c-${s.claim}">${verb}</span>.</q></div>
+      <button class="v-house" aria-pressed="${selected === i}"><span class="v-win">${esc(V[i][0])}</span></button>
+      <div class="v-name">${esc(V[i])}</div>
+    </li>`;
+  }).join('');
+  const accuse = selected == null
+    ? `<button class="g-accuse" disabled>Pick a villager</button>`
+    : `<button class="g-accuse">Accuse ${esc(V[selected])}</button>`;
+  el.innerHTML = `<div class="game">
+    <header class="g-head">
+      <div class="g-mark">Rumeur</div>
+      <div class="g-meta"><span class="g-day">${d.day}</span><span class="g-clock">${d.clock}</span>
+        <span class="g-streak"><i aria-hidden="true"></i>${d.streak}<small> day streak</small></span></div>
+    </header>
+    <p class="g-rule">Exactly <b>${d.liarCount}</b> villager lies. Who started today's rumor?</p>
+    <ol class="g-village">${rows}</ol>
+    <div class="g-foot">${accuse}</div>
+  </div>`;
+  el.querySelectorAll('.v-house').forEach((b, i) => b.addEventListener('click', () => renderGame(el, selected === i ? null : i)));
+}
+function renderMini(el){
+  const [row, mode] = el.dataset.mini.split(',');
+  renderGame(el, mode === 'idle' ? null : +row);
+  const g = el.querySelector('.game'); g.classList.add('is-mini');
+  if (mode === 'wrong') g.classList.add('is-wrong');
+  el.querySelectorAll('.v').forEach((li, i) => { if (i !== +row) li.remove(); });
+  el.querySelectorAll('.g-head,.g-rule').forEach(n => n.remove());
+  if (mode === 'wrong') el.querySelector('.g-accuse').textContent = 'Not ' + DATA.villagers[+row] + ' · it was someone else';
+}
+document.querySelectorAll('[data-mini]').forEach(renderMini);
+document.querySelectorAll('[data-game]').forEach(el => renderGame(el, el.dataset.game === '' ? null : +el.dataset.game));
+</script>
+</body></html>
