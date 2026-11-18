@@ -72,3 +72,27 @@ Retour : « plus moderne, travailler davantage la 3D, s'inspirer de BridgeLab, �
 
 Planche : `planches/v3/01-diorama-moderne.html` (`?solo=d` / `?solo=m`). Générateur : `tools/gen3.py` + `tools/village3.js`.
 Changelog V3 : nouveau système visuel (BridgeLab), Inter, scène 3D réécrite en « clay », étiquettes en verre dépoli, épingle et halo.
+
+## V4 — 2026-11-18 · le village dans le langage BridgeLab (retour Gaia sur V3)
+
+Retour : « pas assez travaillé, le module 3D et le background ; s'inspirer beaucoup plus de BridgeLab ».
+Pages BridgeLab parcourues (accueil, Conduit, Academy, Impact, About). Ce qu'on en retient :
+- **Langage graphique** : formes géométriques arrondies, anneaux et connecteurs à nœuds (icône Conduit), pictos dans des tuiles
+  sauge à grand rayon, arches (logo), trois couleurs vert / terracotta / sauge sur blanc chaud.
+- **Mise en page** : visuel à gauche et carte « liste à pastilles + flèche » à droite, filets fins, petits libellés en mono majuscule,
+  bouton plein vert profond.
+
+Ce qui change :
+- **Module 3D réécrit** (`tools/village4.js`). Socle = tuile arrondie à deux étages, gorges concentriques gravées. Maisons à portes et
+  fenêtres en arche, toits pleins aux arêtes adoucies, nœud blanc cerclé sur chaque faîte. Place = anneau vert + nœud central.
+  Personnages en pilule, arbres en sphères et en pilules. Matière plastique mate avec léger vernis (clearcoat), ombres très douces.
+- **Les témoignages deviennent des connecteurs 3D** : un tube du toit de celui qui parle au toit de celui dont il parle ;
+  vert = « dit vrai », terracotta = « ment » ; une impulsion lumineuse circule en boucle (la rumeur). Survoler une ligne isole son arc.
+- **Fond** : blanc chaud BridgeLab, anneaux concentriques en filet centrés sur la tuile, filet sous l'en-tête.
+- **Carte des témoignages** en verre dépoli (forme de la carte « Three ways we build ») : libellé mono, titre, 5 lignes
+  « **Ada** says **Boris** ● tells the truth → », légende, bouton Accuse vert. Étiquettes de nom en pilules translucides au-dessus des toits.
+- **Soupçon** : maison soulevée + anneau vert pulsé + étiquette pleine verte + ligne marquée SUSPECT.
+- Correctif technique : gestion des couleurs Three r149 activée (`ColorManagement.legacyMode = false`), sinon les teintes sortent délavées.
+
+Planche : `planches/v4/01-village-connecteurs.html` (`?solo=d` / `?solo=m`).
+Changelog V4 : module 3D et fond refaits, connecteurs de témoignages, carte de témoignages, vert profond comme couleur d'action.

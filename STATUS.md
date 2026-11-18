@@ -22,6 +22,6 @@ Prochaine etape : verification independante (prompt 04), puis design/video/soumi
 ## Claude
 
 ## Claude
-- Phase : design · Round V3 (01 modernisée, BridgeLab + Inter) · 2026-11-18
+- Phase : design · Round V4 (langage BridgeLab, connecteurs 3D) · 2026-11-18
 - Livré : `G-DESIGN/PAGES.md`, `REFS.md`, `DESIGN.md`, `planches/v1/01..03-*.html`
 - En attente : validation de Gaia (choix de direction + PAGES.md + 3 questions produit)
