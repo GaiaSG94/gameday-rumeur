@@ -23,5 +23,5 @@ Prochaine etape : verification independante (prompt 04), puis design/video/soumi
 
 ## Claude
 - Phase : design verrouillé (/lock) · 4 pages validées · 2026-11-18
-- Livré : `G-DESIGN/PAGES.md`, `REFS.md`, `DESIGN.md`, `planches/v1/01..03-*.html`
+- Livré : `G-DESIGN/PAGES.md`, `REFS.md`, `STYLE.md`, `DESIGN.md`, planches `v4/01..04-*.html`, `tools/`
 - Suite : implémentation (voir HANDOFF.md) ; 2 questions produit ouvertes
