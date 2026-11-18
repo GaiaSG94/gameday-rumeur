@@ -53,3 +53,22 @@ Recommandation : 01 (ou 02 si on assume le mystère). 03 encore trop pâle, à r
 Questions produit V1 toujours ouvertes.
 
 Changelog V2 : abandon des planches 2D V1 (conservées), scène 3D, 3 nouvelles directions.
+
+## V3 — 2026-11-18 · direction 01 modernisée (retour Gaia sur V2)
+
+Retour : « plus moderne, travailler davantage la 3D, s'inspirer de BridgeLab, étiquettes semi-transparentes, police plus moderne ».
+
+- **BridgeLab (bridgelab.io, ouvert le 2026-11-18)** : pas de 3D. On reprend son système : fond blanc chaud `#faf8f5`,
+  encre `#0e131a`, vert profond `#0f5c51`, terracotta `#c6532a`, sauge `#a6bfae`, cartes blanches à bord fin
+  (12 px de rayon), pastilles de couleur, linéale 500 à approche serrée. Sa police (Söhne) est sous licence : remplacée
+  par **Inter** (OFL, woff2 latin embarqué en base64, licence dans `tools/INTER-LICENSE.txt`).
+- **3D** : rendu « clay ». Volumes biseautés (arêtes arrondies), île en tour avec strates en dégradé,
+  ombres douces (VSM), lumière d'appoint froide, caméra orthographique isométrique, l'île flotte (léger mouvement vertical) au-dessus
+  de son ombre portée. Toits vert profond / sauge / pierre, enduits crème, bancs, puits, arbres et cyprès en sphères lisses, lampes murales.
+- **Étiquettes** : verre dépoli semi-transparent (backdrop-filter), reliées au toit par un filet coudé et un point.
+  « is lying » est surligné en terracotta clair.
+- **Soupçon** (seul usage de la terracotta) : la maison se soulève, halo au sol, épingle qui tourne au-dessus du toit, étiquette et filet en terracotta.
+- **Bouton Accuse** en encre avec une flèche terracotta, bloqué tant qu'aucun suspect n'est choisi.
+
+Planche : `planches/v3/01-diorama-moderne.html` (`?solo=d` / `?solo=m`). Générateur : `tools/gen3.py` + `tools/village3.js`.
+Changelog V3 : nouveau système visuel (BridgeLab), Inter, scène 3D réécrite en « clay », étiquettes en verre dépoli, épingle et halo.
