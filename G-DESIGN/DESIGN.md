@@ -30,3 +30,26 @@ Questions produit ouvertes (non tranchées) :
 3. Le post s'ouvre-t-il sur le Jeu directement ou sur un écran d'accueil ?
 
 Changelog : création (V1).
+
+## V2 — 2026-11-18 · passage en 3D (retour Gaia : « on dirait du slop IA »)
+
+Retour : refaire en 3D, travailler couleurs, textures, détails.
+- Le village est une vraie scène 3D (Three.js r149 embarqué dans chaque planche, aucune requête réseau ;
+  en production : `three` en dépendance npm, compatible CSP Devvit).
+- Textures procédurales (canvas) : enduit à la chaux, tuiles, bois, pavés, herbe fleurie, strates de terre, kraft.
+- Détails : colombages, cheminées, volets, jardinières, puits couvert, chemins pavés, arbres, rochers, clôture, villageois devant leur porte.
+- Bulles HTML accrochées au toit de chaque maison (queue vers la maison), placées vers l'extérieur de l'île.
+- Choisir un suspect : clic sur la maison ou la bulle → la maison se soulève, l'anneau d'accent s'allume au sol.
+
+| # | Direction | Lumière / matière | Accent |
+|---|---|---|---|
+| 01 | Diorama d'après-midi | île flottante, soleil chaud, ardoise + chaux, nuages | brique `#b5533c` |
+| 02 | Veillée | nuit, fenêtres allumées, lanterne au puits, brume, étoiles ; le suspect « s'éteint » | ambre `#f0a83c` |
+| 03 | Maquette en carton | courbes de niveau kraft, carte blanche, tapis de découpe, lumière d'atelier | vermillon `#d2462c` |
+
+Planches : `planches/v2/*.html` (`?solo=d` ou `?solo=m` pour voir le jeu seul à taille réelle).
+Source du générateur : `tools/gen2.py` + `tools/village.js`.
+Recommandation : 01 (ou 02 si on assume le mystère). 03 encore trop pâle, à retravailler si retenue.
+Questions produit V1 toujours ouvertes.
+
+Changelog V2 : abandon des planches 2D V1 (conservées), scène 3D, 3 nouvelles directions.
