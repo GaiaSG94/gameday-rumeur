@@ -1,10 +1,10 @@
-# PAGES — Rumeur (proposé V1, 2026-11-18, à valider par Gaia)
+# PAGES — Rumeur (mis à jour 2026-11-18, style validé V4.1)
 
-| # | Page | Rôle | Contenu clé | Statut |
-|---|------|------|-------------|--------|
-| 1 | **Jeu** (page principale) | Jouer la partie du jour, règle comprise en 5 s | En-tête (Rumeur, date, chrono, série) · règle « Exactly N villager(s) lie » · 5 villageois + leur phrase · choix d'un suspect · bouton Accuse | en revue (3 directions V1) |
-| 2 | **Post** (état dans le feed) | Donner envie de taper sur le post avant de jouer | En-tête de post · aperçu du village du jour (sans révéler les phrases ?) · bouton d'entrée | à dessiner — **question** : le post s'ouvre-t-il directement sur le Jeu (comme le code actuel) ou sur un écran d'accueil (`splash.html` existe) ? |
-| 3 | **Carte de fin** | Résultat, série, invitation à commenter | Gagné / perdu · qui a lancé la rumeur · temps · série · appel à commenter | à dessiner |
-| 4 | **Séries & classement** | Streaks + scores de la communauté | Série perso · scores communautaires | à dessiner — **question** : quelles données communautaires ? (aucune n'existe encore côté serveur) |
+| # | Page | Rôle | Contenu clé | Planche | Statut |
+|---|------|------|-------------|---------|--------|
+| 1 | **Jeu** | Jouer la partie du jour | En-tête (marque, date, chrono, série) · village 3D avec connecteurs · carte des 5 témoignages · Accuse | `planches/v4/01-village-connecteurs.html` | validée (style) |
+| 2 | **Post** (inline dans le feed, `splash.html`) | Donner envie d'entrer | Tuile qui tourne sans indices · accroche · « Listen to the village » · joueurs du jour, série | `planches/v4/02-post.html` | en revue |
+| 3 | **Carte de fin** | Résultat, série, invitation à commenter | Source révélée en terracotta · temps · série 7 jours · accroche « Comment your reasoning » · prochain village | `planches/v4/03-carte-de-fin.html` | en revue |
+| 4 | **Séries & classement** | Série perso + scores de la communauté | Barrettes 7 jours · part d'accusations par villageois (aussi sur les toits) · plus rapides du jour | `planches/v4/04-series-classement.html` | en revue |
 
-Les planches montrent chaque page dans son cadre : desktop 1440×900 (post dans le feed) + mobile 390×844 (exigé par le critère « UI dans le viewport, mobile first », brief §6).
+Décision tirée du code : le post s'ouvre en inline sur `splash.html`, le jeu s'ouvre en mode étendu (`game.html`).

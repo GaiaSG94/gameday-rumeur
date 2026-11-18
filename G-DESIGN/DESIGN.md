@@ -102,3 +102,20 @@ Changelog V4 : module 3D et fond refaits, connecteurs de témoignages, carte de 
   en-tête et puces en verre sombre, texte crème. La tuile claire et ses connecteurs ressortent sur le vert.
 - Carte des témoignages plus opaque (blanc chaud à 74–86 %) pour rester lisible sur fond sombre ; ombre portée plus profonde.
 - Marque : arche verte éclaircie (#7fc2ad) sur fond sombre.
+
+## Déclinaison — 2026-11-18 · style V4.1 validé par Gaia (« Oui, décline le style »)
+
+- `STYLE.md` écrit : palette avec hex, typo, grille, module 3D, composants, mouvement, états.
+- Planches : `02-post.html`, `03-carte-de-fin.html`, `04-series-classement.html` (dans `planches/v4/`), même générateur
+  (`tools/gen5.py` réutilise les jetons de `gen4.py` ; `tools/village5.js` ajoute les modes rotation, révélation, étiquettes chiffrées, arcs masqués).
+- **Post** : tuile en rotation lente **sans connecteurs ni noms** (sinon la réponse se lit avant de jouer).
+- **Carte de fin** : la terracotta passe de « mensonge » à « source révélée » ; seuls les arcs mensongers restent allumés.
+- **Séries & classement** : parts d'accusation affichées sur les toits et en barres, classement du jour.
+
+À trancher / à construire côté serveur (rien de tout ça n'existe dans le code actuel) :
+1. Nombre de joueurs du jour, temps communautaires (« plus rapide que 64 % »), part d'accusations, classement du jour : compteurs Redis + sorted set.
+2. « Déjà joué aujourd'hui → carte de fin directement » : proposé, le serveur accepte aujourd'hui plusieurs soumissions.
+3. Jours à 2 menteurs : question de V1 toujours ouverte.
+4. Pseudos et chiffres des planches = données de démonstration.
+
+Changelog : STYLE.md, 3 pages déclinées, PAGES.md mis à jour.
