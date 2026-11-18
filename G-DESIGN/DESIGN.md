@@ -96,3 +96,9 @@ Ce qui change :
 
 Planche : `planches/v4/01-village-connecteurs.html` (`?solo=d` / `?solo=m`).
 Changelog V4 : module 3D et fond refaits, connecteurs de témoignages, carte de témoignages, vert profond comme couleur d'action.
+
+### V4.1 — 2026-11-18 · fond non blanc (retour Gaia)
+- Fond du jeu en **vert profond** (dégradé radial #2a6b5f → #08201c centré sur la tuile, grain léger, anneaux concentriques en sauge),
+  en-tête et puces en verre sombre, texte crème. La tuile claire et ses connecteurs ressortent sur le vert.
+- Carte des témoignages plus opaque (blanc chaud à 74–86 %) pour rester lisible sur fond sombre ; ombre portée plus profonde.
+- Marque : arche verte éclaircie (#7fc2ad) sur fond sombre.

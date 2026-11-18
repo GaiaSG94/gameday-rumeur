@@ -20,11 +20,14 @@ THEME = dict(selRgb='15,92,81', palette=dict(
   green='#0f5c51', sage='#a6bfae', terra='#c6532a', truth='#1f7563'))
 
 GAME_CSS = r"""
-.game{position:absolute;inset:0;overflow:hidden;font-family:var(--sans);color:var(--ink);background:#faf8f5}
+.game{position:absolute;inset:0;overflow:hidden;font-family:var(--sans);color:var(--ink);
+  background:radial-gradient(75% 85% at var(--gx) var(--gy),#2a6b5f 0%,#174a41 38%,#0d3029 72%,#08201c 100%)}
+.game .grain{position:absolute;inset:0;pointer-events:none;opacity:.35;mix-blend-mode:overlay;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
 .game::before{content:"";position:absolute;inset:0;pointer-events:none;
-  background:repeating-radial-gradient(circle at var(--gx) var(--gy),transparent 0 46px,rgba(15,92,81,.07) 46px 47px);
+  background:repeating-radial-gradient(circle at var(--gx) var(--gy),transparent 0 46px,rgba(166,191,174,.13) 46px 47px);
   -webkit-mask:radial-gradient(circle at var(--gx) var(--gy),#000 0,#000 35%,transparent 70%);mask:radial-gradient(circle at var(--gx) var(--gy),#000 0,#000 35%,transparent 70%)}
-.game::after{content:"";position:absolute;left:0;right:0;top:52px;height:1px;background:var(--line)}
+.game::after{content:"";position:absolute;left:0;right:0;top:52px;height:1px;background:rgba(255,255,255,.1)}
 .game .v3d{position:absolute;inset:0;width:100%!important;height:100%!important;cursor:pointer}
 .v-ov{position:absolute;inset:0;pointer-events:none;z-index:4}
 .tag{position:absolute;left:0;top:0;pointer-events:auto;cursor:pointer;display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px 0 7px;border-radius:999px;
@@ -35,17 +38,18 @@ GAME_CSS = r"""
 .tag.is-sel i{background:#fff}
 .hud{position:absolute;left:0;right:0;top:0;height:52px;display:flex;justify-content:space-between;align-items:center;padding:0 16px;z-index:5}
 .brand{display:flex;align-items:center;gap:10px}
+.hud .mark path:first-child{stroke:#7fc2ad}
 .mark{width:22px;height:22px}
-.brand b{font:600 17px/1 var(--sans);letter-spacing:-.035em}
-.brand small{font:500 10px/1 var(--mono);letter-spacing:.08em;color:var(--muted);text-transform:uppercase;padding-left:10px;border-left:1px solid var(--line)}
+.brand b{font:600 17px/1 var(--sans);letter-spacing:-.035em;color:#f4f1ea}
+.brand small{font:500 10px/1 var(--mono);letter-spacing:.08em;color:rgba(220,232,224,.6);text-transform:uppercase;padding-left:10px;border-left:1px solid rgba(255,255,255,.15)}
 .meta{display:flex;gap:6px}
-.chip{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;white-space:nowrap;font:500 12px/1 var(--sans);font-variant-numeric:tabular-nums;color:var(--ink);background:#fff;border:1px solid rgba(231,227,218,.9);border-radius:8px}
-.chip .fl{width:7px;height:7px;border-radius:50%;background:var(--green)}
-.chip .lbl{color:var(--muted)}
+.chip{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;white-space:nowrap;font:500 12px/1 var(--sans);font-variant-numeric:tabular-nums;color:#f4f1ea;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.chip .fl{width:7px;height:7px;border-radius:50%;background:#a6bfae}
+.chip .lbl{color:rgba(220,232,224,.6)}
 /* testimony card (BridgeLab "three ways" card) */
 .card3{position:absolute;z-index:5;border-radius:14px;padding:14px 14px 12px;border:1px solid rgba(255,255,255,.85);
-  background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,255,255,.55));-webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);
-  box-shadow:0 0 0 1px rgba(231,227,218,.9),0 24px 48px -28px rgba(14,19,26,.4)}
+  background:linear-gradient(180deg,rgba(250,248,245,.86),rgba(250,248,245,.74));-webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);
+  box-shadow:0 0 0 1px rgba(255,255,255,.25),0 30px 60px -24px rgba(0,0,0,.55)}
 .slot-d .card3{right:14px;top:66px;bottom:14px;width:282px;display:flex;flex-direction:column}
 .slot-m .card3{left:10px;right:10px;bottom:10px;padding:12px 12px 10px}
 .c-kick{font:500 10px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
@@ -92,7 +96,7 @@ TPL = """<!doctype html>
 <style>{chrome}{extra}{game}</style></head>
 <body><div class="board">
   <div class="b-title"><div class="kick">{mark} Rumeur · Planche V4 · Page « Jeu »</div>
-    <h1>Le village comme un objet BridgeLab.</h1>
+    <h1>Le village comme un objet BridgeLab, de nuit verte.</h1>
     <p>Tuile arrondie à gorges concentriques, maisons à arches, personnages en pilule. Chaque témoignage est un connecteur 3D entre deux toits (vert = dit vrai, terracotta = ment) parcouru par une impulsion. Les phrases sont dans une carte en verre dépoli.</p></div>
   <div class="f-label" style="left:40px;top:160px">Desktop 1440 × 900 · post in the feed (×0.58) · hover a row to isolate its connector, click to suspect</div>
   <div class="frame frame-d"><div class="host">
@@ -131,7 +135,7 @@ document.fonts.load('500 16px Inter').then(() => document.querySelectorAll('.slo
   const V = DATA.villagers;
   const rows = DATA.statements.map((s, i) => `<li class="row" data-i="${{s.speaker}}" style="--c:${{COLS[s.speaker]}}"><span class="d"></span>
      <span class="txt"><b>${{V[s.speaker]}}</b> says <b>${{V[s.about]}}</b> <span class="cl ${{s.claim === 'liar' ? 'lie' : ''}}">${{s.claim === 'liar' ? 'is lying' : 'tells the truth'}}</span></span><span class="arr">→</span></li>`).join('');
-  slot.innerHTML = `<div class="game" style="--gx:${{tall ? '50%' : '33%'}};--gy:${{tall ? '34%' : '55%'}}">
+  slot.innerHTML = `<div class="game" style="--gx:${{tall ? '50%' : '33%'}};--gy:${{tall ? '34%' : '55%'}}"><div class="grain"></div>
     <header class="hud"><div class="brand">{mark}<b>Rumeur</b><small>Daily village · ${{DATA.day}}</small></div>
       <div class="meta"><span class="chip">${{DATA.clock}}</span><span class="chip"><span class="fl"></span>${{DATA.streak}}${{tall ? '' : '<span class=lbl>day streak</span>'}}</span></div></header>
     <div class="card3"><div class="c-kick">Today's testimonies</div>

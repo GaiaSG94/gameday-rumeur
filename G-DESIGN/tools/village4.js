@@ -147,7 +147,7 @@
     });
 
     // floor shadow
-    const fs = new T.Mesh(new T.PlaneGeometry(16, 16), new T.MeshBasicMaterial({ map: radial('60,50,35', .32), transparent: true, depthWrite: false })); fs.rotation.x = -Math.PI / 2; fs.position.y = -.75; world.add(fs);
+    const fs = new T.Mesh(new T.PlaneGeometry(16, 16), new T.MeshBasicMaterial({ map: radial('0,12,10', .55), transparent: true, depthWrite: false })); fs.rotation.x = -Math.PI / 2; fs.position.y = -.75; world.add(fs);
 
     // camera: orthographic iso, framed by opts.frame {cx, cy, view}
     const aspect = W / H, Hv = F.view * 2, Wv = Hv * aspect;
